@@ -62,17 +62,18 @@ public class Album {
         this.title = title;
     }
 
-    public Date getReviewDate(){
-        return this.reviewDate;
-    }
-
     public String getArtist(){
         return this.artist;
     }
 
     public void setArtist(String artist){
         this.artist = artist;
-    }    
+    }  
+
+
+    public Date getReviewDate(){
+        return this.reviewDate;
+    }
 
     public void setReviewDate(Date reviewDate){
         this.reviewDate = reviewDate;

@@ -54,6 +54,7 @@ public class AlbumController {
         Albums.findById(id).map(Album -> {
 
         Album.setTitle(fixAlbum.getTitle());
+        Album.setArtist(fixAlbum.getArtist());
         Album.setReviewDate(fixAlbum.getReviewDate());
         Album.setReview(fixAlbum.getReview());
         Albums.save(Album);
