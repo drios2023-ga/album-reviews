@@ -1,16 +1,17 @@
-package com.album.entities;
-
-import java.sql.Date;
+package com.example.demo.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+import java.util.Date;
+
 import jakarta.persistence.Id;
 
 @Entity
 public class Album {
- //**************************************** */
+
+    //**************************************** */
     //  Entity Properties
     //**************************************** */
 
@@ -19,7 +20,11 @@ public class Album {
     public Integer id;
 
     public String title;
+
+    public String artist;
+
     public Date reviewDate;
+
     public String review;
 
     //**************************************** */
@@ -30,8 +35,9 @@ public class Album {
 
     }
 
-    public Album(String title, Date reviewDate, String review){
+    public Album(String title, String artist, Date reviewDate, String review){
         this.title = title;
+        this.artist = artist;
         this.reviewDate = reviewDate;
         this.review = review;
     }
@@ -60,10 +66,17 @@ public class Album {
         return this.reviewDate;
     }
 
+    public String getArtist(){
+        return this.artist;
+    }
+
+    public void setArtist(String artist){
+        this.artist = artist;
+    }    
+
     public void setReviewDate(Date reviewDate){
         this.reviewDate = reviewDate;
-    }   
-    
+    }
     public String getReview(){
         return this.review;
     }

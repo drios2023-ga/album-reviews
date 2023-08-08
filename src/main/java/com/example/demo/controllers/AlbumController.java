@@ -1,4 +1,4 @@
-package com.album.controllers;
+package com.example.demo.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,33 +28,34 @@ public class AlbumController {
 
     // get request to /Albums
     @CrossOrigin // Enable CORS <-    
-    @GetMapping("/Albums")
+    @GetMapping("/albums")
     public List<Album> index(){
         return Albums.findAll();
     }
 
     // get request to /Albums/:id
     @CrossOrigin // Enable CORS <-    
-    @GetMapping("/Albums/{id}")
+    @GetMapping("/albums/{id}")
     public Optional<Album> show(@PathVariable Integer id){
         return Albums.findById(id);
     }
 
     @CrossOrigin // Enable CORS <-
-    @PostMapping("/Albums")
+    @PostMapping("/albums/new")
     public List<Album> create(@RequestBody Album newAlbum){
         Albums.save(newAlbum); // Create the New Album
         return Albums.findAll();
     }
 
     @CrossOrigin // Enable CORS <-
-    @PutMapping("/Albums/{id}")
+    @PutMapping("/albums/{id}/update")
     public List<Album> update(@RequestBody Album fixAlbum, @PathVariable Integer id){
         // Find Album by it's then use map to update it
         Albums.findById(id).map(Album -> {
 
-        Album.setName(fixAlbum.getName());
-        Album.setAge(fixAlbum.getAge());
+        Album.setTitle(fixAlbum.getTitle());
+        Album.setReviewDate(fixAlbum.getReviewDate());
+        Album.setReview(fixAlbum.getReview());
         Albums.save(Album);
         return Album;
 
@@ -65,7 +66,7 @@ public class AlbumController {
     }
 
     @CrossOrigin // Enable CORS <-
-    @DeleteMapping("/Albums/{id}")
+    @DeleteMapping("/albums/{id}")
     public List<Album> destroy(@PathVariable Integer id){
         Albums.deleteById(id);
         return Albums.findAll();
